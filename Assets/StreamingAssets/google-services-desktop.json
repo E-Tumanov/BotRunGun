@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "75706596481",
+    "firebase_url": "https://rbr2-a470d.firebaseio.com",
+    "project_id": "rbr2-a470d",
+    "storage_bucket": "rbr2-a470d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:75706596481:android:d77e2e9fd60f8f2e442180",
+        "android_client_info": {
+          "package_name": "com.tumanoid.allcashgames"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "75706596481-dccjluao2vdmc9llb59v20e649pbi6qn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIMq4f-4r43y6vjJvogBny1XULalZHpt0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "75706596481-dccjluao2vdmc9llb59v20e649pbi6qn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

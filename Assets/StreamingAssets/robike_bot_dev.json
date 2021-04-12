@@ -1,0 +1,18 @@
+{
+   "BaseSpeed" : 8.5,
+   "BaseAccel" : 0.5,
+   "ShiftSpeed" : 2,
+   "ShiftAccel" : 8,
+   "LongTapSpeed" : 5,
+   "LongTapAccel" : 2,
+   "LongTapDeccel" : 2.5,
+   "LongTapVSpeedAdd" : 4.5,
+   "BoostSpeed" : 30,
+   "BoostAccel" : 0.3,
+   "WallFrictionPCent" : -0.3,
+   "ballPower" : 1,
+   "ballPowerPlayer" : 2.5,
+   "ballDamp" : 0.97,
+   "ballRandomAng" : 10,
+   "ballDirMix" : 0.2
+}

@@ -1,0 +1,25 @@
+{
+   "CameraPos" : [
+      0,
+      -12,
+      13.25
+   ],
+   "Camera_XFollowMul" : 0.95,
+   "Camera_XRadActivation" : 2,
+   "Camera_ZFollowMul" : 1,
+   "Stage_Time2WinScene" : 3,
+   "WinScene_DelayBeforeCanExit" : 3,
+   "Finished_FallSpeedMul" : 0.4,
+   "ContinueDelaySec" : 3,
+   "EditorContinueDelaySec" : 1,
+   "BulletSmallBoxCount" : 10,
+   "tm_ow_killed" : 4.5,
+   "tm_ow_impact" : 2.5,
+   "tm_ow_victory" : 7,
+   "StoppedDist" : 10,
+   "ads_inter_p_impact" : 0.15,
+   "ads_inter_p_killed" : 0.5,
+   "ads_inter_p_victory" : 0.8,
+   "shootPrice" : 1,
+   "__end" : 0
+}

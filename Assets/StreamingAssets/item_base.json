@@ -1,0 +1,94 @@
+[
+   {
+      "id" : "bullet_box",
+      "tkit" : "simp",
+      "prefab" : "BULLET_BOX",
+      "edname" : "Bullet",
+      "item_type" : "BULLET",
+      "desc" : "Ящик с патронами",
+      "ico" : "ToolsIco#bullet_box"
+   },
+   {
+      "id" : "coin_v",
+      "tkit" : "simp",
+      "prefab" : "COIN",
+      "edname" : "Coin",
+      "item_type" : "COIN",
+      "desc" : "",
+      "ico" : "ToolsIco#coin"
+   },
+   {
+      "id" : "jewel_v",
+      "tkit" : "simp",
+      "prefab" : "JEWEL",
+      "edname" : "Crystal",
+      "item_type" : "JEWEL",
+      "desc" : "",
+      "ico" : "ToolsIco#crystal"
+   },
+   {
+      "id" : "walk_ball",
+      "tkit" : "walk_ball",
+      "prefab" : "WALK_BALL_A",
+      "edname" : "Energy ball",
+      "item_type" : "BLOCK",
+      "desc" : "Сгусток энергии между двумя точками",
+      "ico" : "ToolsIco#walk_ball"
+   },
+   {
+      "id" : "box_legacy",
+      "tkit" : "simp",
+      "prefab" : "BOX_LONG",
+      "edname" : "Twin picks",
+      "item_type" : "BLOCK",
+      "desc" : "",
+      "ico" : "ToolsIco#two_pike"
+   },
+   {
+      "id" : "lazer_a",
+      "tkit" : "lazer_2p",
+      "prefab" : "LAZER_RED",
+      "edname" : "Lazer",
+      "item_type" : "BLOCK",
+      "desc" : "лазер между двумя произвольными точками",
+      "ico" : "ToolsIco#lazer"
+   },
+   {
+      "id" : "spike_hm",
+      "tkit" : "hor_mover",
+      "prefab" : "SPIKE_STICK",
+      "edname" : "Thorn stick",
+      "item_type" : "BLOCK",
+      "desc" : "столб с шипами. движется от стены к стене",
+      "ico" : "ToolsIco#spike_stick",
+      "UNDER_CONSTRUCT" : 0
+   },
+   {
+      "id" : "box_small",
+      "tkit" : "simp",
+      "prefab" : "BOX_SMALL",
+      "edname" : "Small box",
+      "item_type" : "BLOCK",
+      "desc" : "",
+      "ico" : "ToolsIco#cube"
+   },
+   {
+      "id" : "barrel_red",
+      "tkit" : "simp",
+      "prefab" : "BARREL_RED",
+      "edname" : "Piramid",
+      "item_type" : "BLOCK",
+      "desc" : "",
+      "ico" : "ToolsIco#one_pike"
+   },
+   {
+      "id" : "barrel_red_mod",
+      "tkit" : "simp",
+      "prefab" : "barrel_red_cm",
+      "edname" : "Бочка(УБРАТЬ)",
+      "item_type" : "BLOCK",
+      "desc" : "",
+      "ico" : "",
+      "UNDER_CONSTRUCT" : 1
+   }
+]

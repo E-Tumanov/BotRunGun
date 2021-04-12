@@ -1,0 +1,16 @@
+{
+    "name": "UIAnimatorEditor",
+    "references": [
+        "GUID:2da831d8b2b737447962c6b87584b3e1"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": []
+}

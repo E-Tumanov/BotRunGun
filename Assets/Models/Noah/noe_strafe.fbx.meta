@@ -1,0 +1,305 @@
+fileFormatVersion: 2
+guid: 2ccab18a9045cdb418650424e7fcf2a6
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: body
+    100002: Head
+    100004: head
+    100006: headphone
+    100008: l_arm1
+    100010: l_leg
+    100012: l_spring
+    100014: l_yel
+    100016: //RootNode
+    100018: r_arm1
+    100020: r_leg
+    100022: r_spring
+    100024: r_yel
+    100026: stupica
+    100028: up_body
+    100030: wheel
+    100032: noe_bot
+    100034: head_CTRL
+    100036: ikHandle1
+    100038: ikHandle2
+    100040: l_arm_g
+    100042: l_arm_jnt
+    100044: l_elb
+    100046: l_elbow
+    100048: l_hand
+    100050: l_hand_CTRL
+    100052: r_arm_g
+    100054: r_arm_jnt
+    100056: r_elb
+    100058: r_elbow
+    100060: r_hand
+    100062: r_hand_CTRL
+    100064: up_body_CTRL
+    400000: body
+    400002: Head
+    400004: head
+    400006: headphone
+    400008: l_arm1
+    400010: l_leg
+    400012: l_spring
+    400014: l_yel
+    400016: //RootNode
+    400018: r_arm1
+    400020: r_leg
+    400022: r_spring
+    400024: r_yel
+    400026: stupica
+    400028: up_body
+    400030: wheel
+    400032: noe_bot
+    400034: head_CTRL
+    400036: ikHandle1
+    400038: ikHandle2
+    400040: l_arm_g
+    400042: l_arm_jnt
+    400044: l_elb
+    400046: l_elbow
+    400048: l_hand
+    400050: l_hand_CTRL
+    400052: r_arm_g
+    400054: r_arm_jnt
+    400056: r_elb
+    400058: r_elbow
+    400060: r_hand
+    400062: r_hand_CTRL
+    400064: up_body_CTRL
+    2300000: body
+    2300002: head
+    2300004: headphone
+    2300006: l_arm1
+    2300008: l_leg
+    2300010: l_spring
+    2300012: l_yel
+    2300014: r_arm1
+    2300016: r_leg
+    2300018: r_spring
+    2300020: r_yel
+    2300022: stupica
+    2300024: wheel
+    3300000: body
+    3300002: head
+    3300004: headphone
+    3300006: l_arm1
+    3300008: l_leg
+    3300010: l_spring
+    3300012: l_yel
+    3300014: r_arm1
+    3300016: r_leg
+    3300018: r_spring
+    3300020: r_yel
+    3300022: stupica
+    3300024: wheel
+    4300000: headphone
+    4300002: head
+    4300004: r_leg
+    4300006: l_leg
+    4300008: l_yel
+    4300010: l_arm1
+    4300012: r_arm1
+    4300014: r_yel
+    4300016: body
+    4300018: r_spring
+    4300020: l_spring
+    4300022: stupica
+    4300024: wheel
+    7400000: strafe_left_anm
+    7400002: strafe_right_anm
+    9500000: //RootNode
+    11100000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: "Avatar creation failed:\n\tCannot find root motion transform
+      'noe_bot'.\n"
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: strafe_left_anm
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 15
+      wrapMode: 1
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: l_spring
+        weight: 1
+      - path: r_spring
+        weight: 1
+      - path: stupica
+        weight: 1
+      - path: up_body
+        weight: 1
+      - path: up_body/body
+        weight: 1
+      - path: up_body/Head
+        weight: 1
+      - path: up_body/Head/head
+        weight: 1
+      - path: up_body/Head/headphone
+        weight: 1
+      - path: up_body/l_arm1
+        weight: 1
+      - path: up_body/l_leg
+        weight: 1
+      - path: up_body/l_yel
+        weight: 1
+      - path: up_body/r_arm1
+        weight: 1
+      - path: up_body/r_leg
+        weight: 1
+      - path: up_body/r_yel
+        weight: 1
+      - path: wheel
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: strafe_right_anm
+      takeName: Take 001
+      firstFrame: 15
+      lastFrame: 30
+      wrapMode: 1
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: l_spring
+        weight: 1
+      - path: r_spring
+        weight: 1
+      - path: stupica
+        weight: 1
+      - path: up_body
+        weight: 1
+      - path: up_body/body
+        weight: 1
+      - path: up_body/Head
+        weight: 1
+      - path: up_body/Head/head
+        weight: 1
+      - path: up_body/Head/headphone
+        weight: 1
+      - path: up_body/l_arm1
+        weight: 1
+      - path: up_body/l_leg
+        weight: 1
+      - path: up_body/l_yel
+        weight: 1
+      - path: up_body/r_arm1
+        weight: 1
+      - path: up_body/r_leg
+        weight: 1
+      - path: up_body/r_yel
+        weight: 1
+      - path: wheel
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: noe_bot
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

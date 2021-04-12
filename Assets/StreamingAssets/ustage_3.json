@@ -1,0 +1,38 @@
+{
+    "ver": 1,
+    "sid": 0,
+    "coinPreReward": 80,
+    "bossInfo": {
+        "coinHP": 0,
+        "addonHP": 50,
+        "regenPeriod": 2,
+        "regenPcnt": 0.0799999982118607,
+        "regenAddon": 0
+    },
+    "colorInfo": {
+        "floor": {
+            "x": 103,
+            "y": 96,
+            "z": 192
+        },
+        "border": {
+            "x": 221,
+            "y": 155,
+            "z": 99
+        },
+        "sky": {
+            "x": 150,
+            "y": 217,
+            "z": 243
+        }
+    },
+	"msgList": [],
+    "cursorPos": {
+        "x": -3,
+        "y": 0,
+        "z": 46
+    },
+    "stageFileName": "ustage_0.json",
+    "objects": {    
+    }
+}
