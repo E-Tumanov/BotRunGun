@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// ДОДЕЛАТЬ НОРМАЛЬНО
+using YsoCorp.GameUtils;
+
 static class AMPLITUDE
 {
 #if (USE_AMPLITUDE)
@@ -24,6 +27,7 @@ static class AMPLITUDE
             return;
 
         Amplitude.Instance.logEvent("game_start");
+        
     }
 
     public static void level_start(int stageNum)
@@ -35,6 +39,8 @@ static class AMPLITUDE
             {"num" , stageNum.ToString() }
         };
         Amplitude.Instance.logEvent("level_start", data);
+
+        YCManager.instance.OnGameStarted (stageNum);
     }
 
     public static void level_finished(int stageNum, int percentCoinGet)
@@ -62,6 +68,8 @@ static class AMPLITUDE
             Amplitude.Instance.logEvent("level_win", data);
         else
             Amplitude.Instance.logEvent("level_fail", data);
+
+        YCManager.instance.OnGameStarted (stageNum);
     }
 
     public static void main_menu()

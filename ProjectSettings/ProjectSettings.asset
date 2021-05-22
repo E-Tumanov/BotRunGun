@@ -177,7 +177,7 @@ PlayerSettings:
     tvOS: 
   buildNumber:
     iPhone: 521
-  AndroidBundleVersionCode: 550
+  AndroidBundleVersionCode: 551
   AndroidMinSdkVersion: 21
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 0
@@ -251,10 +251,10 @@ PlayerSettings:
   clonedFromGUID: 00000000000000000000000000000000
   templatePackageId: 
   templateDefaultScene: 
-  AndroidTargetArchitectures: 1
+  AndroidTargetArchitectures: 3
   AndroidSplashScreenScale: 2
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: '{inproject}: allcashgames.keystore'
+  AndroidKeystoreName: '{inproject}: KeyStore/allcashgames.keystore'
   AndroidKeyaliasName: allcashgames
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0
@@ -262,7 +262,7 @@ PlayerSettings:
   AndroidEnableTango: 0
   androidEnableBanner: 1
   androidUseLowAccuracyLocation: 0
-  androidUseCustomKeystore: 0
+  androidUseCustomKeystore: 1
   m_AndroidBanners:
   - width: 320
     height: 180
@@ -825,7 +825,7 @@ PlayerSettings:
   platformArchitecture:
     iPhone: 1
   scriptingBackend:
-    Android: 0
+    Android: 1
     iPhone: 1
   il2cppCompilerConfiguration: {}
   managedStrippingLevel: {}
