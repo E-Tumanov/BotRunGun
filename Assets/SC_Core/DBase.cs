@@ -99,11 +99,7 @@ public class StageMsgInfo
 [Serializable]
 public class CBrona
 {
-    public string mtype = "sphere";
-    public float size = 1;
-    public float polarH = 3;
-    public float polarR = 3;
-    public float rotSpeed = 35; // grad/sec
+    public string mtype = "nondef";
 };
 
 

@@ -18,9 +18,8 @@ namespace RBGame
         void BossShot ();
         void Exploid ();
         void Victory ();
-        void SetPlayerZ (float z);
         void SetColor (int colorNum);
-        Vector3 GetPivot();
+        Vector3 GetPivot ();
         event System.Action<Collider> OnHit;
     }
 
@@ -42,39 +41,9 @@ namespace RBGame
         [SerializeField] Transform fxHealCross;
         [SerializeField] Renderer bodyRender;
 
-        Vector3 shakePos;
-        float playerZPos;
-
         public event System.Action<Collider> OnHit;
-
         Sequence prepareFireSeq;
-        float sinHerz = 1;
-        float startH = 15;
 
-        /// <summary>
-        /// положение по Z
-        /// </summary>
-        public void SetPlayerZ (float z)
-        {
-            playerZPos = z;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="other"></param>
-        private void OnTriggerEnter (Collider other)
-        {
-            if (other.GetComponent<FireColorBall> () == null)
-                return;
-
-            OnHit?.Invoke (other);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="colorNum"></param>
         public void SetColor (int colorNum)
         {
             ///bodyRender.material.color = colorStack[colorNum];
@@ -97,7 +66,7 @@ namespace RBGame
         /// </summary>
         public void ActivateGunFire (float delaySec)
         {
-            SoundManager.alarm_boss_prepare.Play();
+            SoundManager.alarm_boss_prepare.Play ();
 
             //  если уже идёт, то отмена
             if (prepareFireSeq != null)
@@ -109,21 +78,19 @@ namespace RBGame
 
             prepareFireSeq = DOTween.Sequence ()
             .AppendInterval (delaySec)
-            .AppendCallback (() =>
-             {
+            .AppendCallback (() => {
                 gunKeeper.gameObject.SetActive (true);
             })
             .AppendInterval (4)
-            .AppendCallback (() =>
-             {
-                    /*
-                    //if (SysBullet.count == 0 && 
-                    if (gunKeeper.gameObject.activeSelf)
-                    {
-                        //GunReady2Fire = true;
-                    }*/
-                    // заменил на событие
-                })
+            .AppendCallback (() => {
+                /*
+                //if (SysBullet.count == 0 && 
+                if (gunKeeper.gameObject.activeSelf)
+                {
+                    //GunReady2Fire = true;
+                }*/
+                // заменил на событие
+            })
             .SetLink (gameObject);
 
         }
@@ -186,8 +153,7 @@ namespace RBGame
             Instantiate (fxBloodNOAH, tpos, Quaternion.identity);
 
             // Отдача
-            MTask.Run (this, 0, 0.2f, t =>
-            {
+            MTask.Run (this, 0, 0.2f, t => {
                 stvol.transform.localPosition = Vector3.forward * cv.Evaluate (t);
             });
         }
@@ -208,7 +174,6 @@ namespace RBGame
         /// </summary>
         public void Victory ()
         {
-            sinHerz = 3;
             textHP.text = ":)";
             textHP.gameObject.SetActive (true);
             face.gameObject.SetActive (false);
@@ -219,15 +184,19 @@ namespace RBGame
             return transform.position + Vector3.up * 3.0f;
         }
 
+        void OnTriggerEnter (Collider other)
+        {
+            if (other.GetComponent<FireColorBall> () == null)
+            {
+                return;
+            }
+            OnHit?.Invoke (other);
+        }
+
         void Update ()
         {
-            //float zpos = di.PlayerModel.position.z + 9;
-            float zpos = 0;
-
-            startH = 0;// Mathf.Clamp (startH - 20 * Time.deltaTime, 0, 100);
-            float ypos = startH + 0.25f * Mathf.Sin (G.time * 3 * sinHerz) + di.GetUpOffset (zpos);
-
-            transform.localPosition = new Vector3 (0, ypos, zpos);
+            float ypos = 0.25f * Mathf.Sin (G.time * 3) + di.GetUpOffset (0);
+            transform.localPosition = new Vector3 (0, ypos, 0);
         }
     }
 }

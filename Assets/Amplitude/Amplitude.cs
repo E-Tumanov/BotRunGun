@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 
 public class Amplitude {
 	private static readonly string UnityLibraryName = "amplitude-unity";
-	private static readonly string UnityLibraryVersion = "1.6.0";
+	private static readonly string UnityLibraryVersion = "2.0.0";
 
 	private static Dictionary<string, Amplitude> instances;
 	private static readonly object instanceLock = new object();
@@ -43,6 +43,8 @@ public class Amplitude {
 	private static extern void _Amplitude_setOptOut(string instanceName, bool enabled);
 	[DllImport ("__Internal")]
 	private static extern void _Amplitude_setMinTimeBetweenSessionsMillis(string instanceName, long minTimeBetweenSessionsMillis);
+	[DllImport ("__Internal")]
+	private static extern void _Amplitude_setEventUploadPeriodSeconds(string instanceName, int eventUploadPeriodMillis);
 	[DllImport ("__Internal")]
 	private static extern void _Amplitude_setLibraryName(string instanceName, string libraryName);
 	[DllImport ("__Internal")]
@@ -488,6 +490,27 @@ public class Amplitude {
 #endif
 	}
 	
+	/// <summary>
+	/// Sets event upload period seconds. The SDK will attempt to batch upload unsent events
+	/// every eventUploadPeriodSecond seconds, or if the unsent event count exceeds the
+	/// event upload threshold. Default is 30 seconds.
+	/// </summary>
+	/// <param name="eventUploadPeriodSeconds">seconds between batch uploads of events</param>
+	public void setEventUploadPeriodSeconds(int eventUploadPeriodSeconds) {
+		Log (string.Format("C# eventUploadPeriodSeconds {0}", eventUploadPeriodSeconds));
+#if (UNITY_IPHONE || UNITY_TVOS)
+		if (Application.platform == RuntimePlatform.IPhonePlayer || Application.platform == RuntimePlatform.tvOS) {
+			_Amplitude_setEventUploadPeriodSeconds(instanceName, eventUploadPeriodSeconds);
+		}
+#endif
+
+#if UNITY_ANDROID
+		if (Application.platform == RuntimePlatform.Android) {
+			pluginClass.CallStatic("setEventUploadPeriodMillis", instanceName, eventUploadPeriodSeconds * 1000);
+		}
+#endif
+	}
+
 	/// <summary>
 	/// If your app has its own system for tracking devices, you can set the deviceId.
 	/// 

@@ -17,9 +17,9 @@
    "tm_ow_impact" : 2.5,
    "tm_ow_victory" : 7,
    "StoppedDist" : 10,
-   "ads_inter_p_impact" : 0.15,
-   "ads_inter_p_killed" : 0.5,
-   "ads_inter_p_victory" : 0.8,
+   "ads_inter_p_impact" : 1.15,
+   "ads_inter_p_killed" : 0.8,
+   "ads_inter_p_victory" : 0.9,
    "shootPrice" : 1,
    "__end" : 0
 }

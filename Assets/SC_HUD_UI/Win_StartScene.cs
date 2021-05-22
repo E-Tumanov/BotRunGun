@@ -7,6 +7,7 @@ using SimpleJSON;
 using UIAnimatorCore;
 using System.Configuration;
 using UnityEditor;
+using TMPro;
 
 /// <summary>
 /// Главное меню. Стартовая сцена
@@ -22,7 +23,7 @@ namespace RBGame
 
         [SerializeField] Text guid_ver_info;
         [SerializeField] Text helloMSG;
-        [SerializeField] Text currLevel;
+        [SerializeField] TMP_Text currLevel;
 
         [SerializeField] Button tap2Play;
 

@@ -6,7 +6,7 @@ namespace RBGame
 {
     public class CoinManager : GModel
     {
-        public event System.Action<int, int> changeCount = delegate { };
+        //public event System.Action<int, int> changeCount = delegate { };
         public event System.Action<int> onReward = delegate { };
 
         // Всего на карте монет
@@ -25,7 +25,7 @@ namespace RBGame
             totalCount = di.CurrStage.CountItemByType ("COIN");
             CollectedCount = di.CurrStage.coinPreReward;
 
-            eve.OnBossKilled.AddListener (this, x => 
+            Eve.OnBossKilled.AddListener (this, x => 
             {
                 MTask.Run (this, 2, () => 
                 {
@@ -84,7 +84,7 @@ namespace RBGame
 
             var prev = CollectedCount;
             CollectedCount = Mathf.Clamp(CollectedCount + value, 0, 10000000);
-            changeCount(CollectedCount, prev);
+            //changeCount(CollectedCount, prev);
         }
     }
 }

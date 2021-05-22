@@ -3,9 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using RBGame.Factory;
 using System;
+using UnityEngine.Assertions;
 
 namespace RBGame
 {
+    //  Одна на всю игру
+    public static class BroadCastMessage
+    {
+        static GameEventSystem _eve;
+        public static GameEventSystem Eve
+        {
+            get
+            {
+                if (_eve == null)
+                    _eve = new GameEventSystem ();
+                return _eve;
+            }
+        }
+    }
+
+
     /// <summary>
     /// 
     /// ROOT COMPOSITION!
@@ -44,17 +61,10 @@ namespace RBGame
         private void Awake ()
         {
             Instance = this;
+            SceneNameResolver ();
 
             ConfDB.LoadConfigsAndSave ();
-            //G.RoadConfig = RoadConfig;
 
-            if (roadName != null && roadName != "")
-                G.stageFileName = roadName + ".json";
-
-            if (G.stageFileName == string.Empty)
-                G.stageFileName = "101.json";
-
-            
             GamePad = FindObjectOfType<GamePad> ();
 
             {
@@ -68,7 +78,11 @@ namespace RBGame
             CoinManager = GetComponent<CoinManager> ();
             TripManager = GetComponent<TripManager> ();
             RoadManager = FindObjectOfType<RoadManager> ();
-            PlayerModel = GetComponent<PlayerModel> ();
+
+            PlayerModel = FindObjectOfType<PlayerMover> ();
+            Assert.IsNotNull (PlayerModel);
+
+
             BattleManager = GetComponent<BattleManager> ();
             BossFactory = FindObjectOfType<BossFactory> ();
 
@@ -81,14 +95,26 @@ namespace RBGame
             return Mathf.Lerp (RoadConfig.GetUpOffset (zpos), 0, mul);
         }
 
-        private void Update ()
-        {
-            Command.RunList ();
-        }
-
         private void OnDestroy ()
         {
-            //Instance = null;
+            Instance = null;
+        }
+
+        void SceneNameResolver ()
+        {
+
+#if (UNITY_EDITOR)
+            if (roadName != null && roadName != "")
+            {
+                G.stageFileName = roadName + ".json";
+            }
+#endif
+
+            if (G.stageFileName == string.Empty)
+            {
+                Debug.LogWarning ("Map name undef");
+                G.stageFileName = "101.json";
+            }
         }
     }
 
@@ -107,7 +133,8 @@ namespace RBGame
     {
         protected GameContext di => GameContext.Instance;
 
-        protected GameEventSystem eve => di.eve;
+        protected GameEventSystem Eve => BroadCastMessage.Eve;
+
         protected IPlayerModel bot => di.PlayerModel;
         protected BossInfo bossInfo => di.BossInfo;
         protected BallsManager ballsManager => di.BallsManager;
@@ -115,10 +142,10 @@ namespace RBGame
         protected TripManager trip => di.TripManager;
         protected CoinManager coin => di.CoinManager;
         protected BattleManager battleMgr => di.BattleManager;
-        protected GamePad gamepad => di.GamePad;
         protected BossFactory factoryBoss => di.BossFactory;
         protected Stage stage => di.CurrStage;
 
         protected CfgRoad roadConfig => di.RoadConfig;
+        protected void DG (string msg) => Debug.Log (msg);
     }
 }

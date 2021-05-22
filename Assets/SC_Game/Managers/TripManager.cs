@@ -45,6 +45,8 @@ namespace RBGame
                     }
                 };
             }
+
+            bot.Run ();
         }
 
         private void OnDestroy()
@@ -67,9 +69,9 @@ namespace RBGame
                 if (!IsFinished)
                 {
                     IsFinished = true;
-                    
-                    // Дотянул :(
-                    eve.OnPlayerFinished.FireEvent(new PlayerFinished());
+
+                    // Дотянул до финиша
+                    Eve.OnPlayerFinished.FireEvent(null);
                     
                     // Надо вынести в отдельный МАНАГЕР
                     if (coin.totalCount != 0)
@@ -81,17 +83,18 @@ namespace RBGame
             {
                 // Проверка импакта в SysImpact наверное должна быть
                 // Или в качестве стратегии передевать в сам STAGE
-                var data = new UpdateData() { playerPos = new Vector2(playerPos.x, playerPos.z), playerRad = 0.3f };
+
+                // Может вообще на физику юнитёвую переехать
+                var data = new UpdateData() { playerPos = new Vector2(playerPos.x, playerPos.z), playerRad = 0.2f };
                 foreach (var e in stage.instancedItemList)
                 {
                     if (e.go != null) // это те кого забрали. Хотя, конечно, нужно перестроить список
                     {
                         e.go.XUpdate(G.deltaTime, data);
                         
-                        if (G.isRoundStarted && !isBotImpacted)
+                        if (G.isRoundStarted)
                         {
-                            //if (e.go.XCollision(data))
-                            if (e.go.XCollision (data) && e.go.itemType == MAP_ITEM_TYPE.COIN)
+                            if (e.go.XCollision(data))
                             {
                                 CollisionItemTest(e.go);
                             }
@@ -102,9 +105,12 @@ namespace RBGame
         }
 
 
-        private void CollisionItemTest (IMapItem item)
+        public void CollisionItemTest (IMapItem item)
         {
-            eve.OnPlayerInteractItem.FireEvent(new PlayerInteractItem { item = item });
+            if (isBotImpacted)
+                return;
+
+            Eve.OnPlayerInteractItem.FireEvent(new PlayerInteractItem { item = item });
 
             switch (item.itemType)
             {
@@ -112,6 +118,8 @@ namespace RBGame
                 case MAP_ITEM_TYPE.COIN:
                     coin.Change(+1);
                     SoundManager.get_coin.Play();
+                    // Уничтожить объект
+                    stage.DeleteItemOnPos(item.pos, true);
                     break;
 
                 // Патроны
@@ -123,26 +131,23 @@ namespace RBGame
 
                 // Алмаз
                 case MAP_ITEM_TYPE.JEWEL:
+                    // Уничтожить объект
+                    stage.DeleteItemOnPos (item.pos, true);
                     break;
 
                 //  Долбанулись
                 case MAP_ITEM_TYPE.BLOCK:
-                    eve.OnPlayerImpact.FireEvent(new PlayerImpact());
+                    Eve.OnPlayerImpact.FireEvent(null);
                     SoundManager.impact.Play(); // Пора манагеру подписываться уже! Не маленький
                     Impact();
                     break;
             }
-
-            // Уничтожить объект
-            stage.DeleteItemOnPos(item.pos, true);
         }
 
 
         private void Impact()
         {
-            CameraJitter.JitIt(1.5f); // потрясём камеру
             isBotImpacted = true;
-            AMPLITUDE.level_end(StageManager.stageNUM, false);
         }
     }
 }

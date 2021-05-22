@@ -44,7 +44,7 @@ public class ItemWalkBall : Item, IWalkBall
         mStartPivotPos = new Vector3(param[0].AsFloat, ypos1, param[1].AsFloat);
         p1.position = mStartPivotPos;
         p2.position = new Vector3(mStartPivotPos.x + param[2].AsFloat, ypos2, mStartPivotPos.z + param[3].AsFloat);
-        ballSpeed = param[4].AsFloat;
+        ballSpeed = 2 * param[4].AsFloat;
 
         SolveData();
         SolveBallPos();

@@ -20,7 +20,7 @@ namespace RBGame
             // Сразу выходим
             if (!ADS.IsAvaliableReward())
             {
-                eve.OnBuyBullet.FireEvent (new BuyBullet { isCanceled = true });
+                Eve.OnBuyBullet.FireEvent (new BuyBullet { isCanceled = true });
                 UIManager.OpenWin(WINDOW.__end, null);
                 return;
             }
@@ -34,11 +34,11 @@ namespace RBGame
             {
                 UIManager.OpenWin(WINDOW.__end, null);
 
-                eve.OnBuyBullet.FireEvent(new BuyBullet { isStarted = true });
+                Eve.OnBuyBullet.FireEvent(new BuyBullet { isStarted = true });
 
                 ADS.OpenReward(
-                    () => eve.OnBuyBullet.FireEvent(new BuyBullet { value = bulletSum }),
-                    () => eve.OnBuyBullet.FireEvent(new BuyBullet { isCanceled = true })
+                    () => Eve.OnBuyBullet.FireEvent(new BuyBullet { value = bulletSum }),
+                    () => Eve.OnBuyBullet.FireEvent(new BuyBullet { isCanceled = true })
                 );
                 /*
                 if (AdsRevardVideo.inst && AdsRevardVideo.inst.IsLoadRewardVideo())

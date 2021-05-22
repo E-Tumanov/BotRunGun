@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: stage_splitterGC
-  m_Shader: {fileID: 3, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: USE_FRESNEL _GLOSSYREFLECTIONS_OFF _SPECULARHIGHLIGHTS_OFF
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -79,7 +79,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BCC: {r: 0.7877358, g: 0.93976283, b: 1, a: 0}
-    - _Color: {r: 0.3584906, g: 0.27210745, b: 0.26717696, a: 1}
+    - _Color: {r: 0.6872552, g: 0.7102201, b: 0.735849, a: 1}
     - _ColorW: {r: 0.16981131, g: 0.16981131, b: 0.16981131, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}

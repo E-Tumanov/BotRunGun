@@ -24,7 +24,7 @@ MonoBehaviour:
   status: 1
   xfbml: 0
   frictionlessRequests: 1
-  androidKeystorePath: 'd:\RbRace2\KeyStore\allcashgames.keystore '
+  androidKeystorePath: 
   iosURLSuffix: 
   appLinkSchemes:
   - list: []

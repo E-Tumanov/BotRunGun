@@ -7,35 +7,57 @@ using UnityEngine;
 
 namespace RBGame
 {
+
+    /*
+    
+    MetaGame Manger уже нужен
+    Сохранения
+    Прогресс
+    Статистика
+    Аналитика возможно
+     
+     */
+
     /// <summary>
     ///
     /// </summary>
     public class Game : GModel
     {
-        private void LateUpdate()
-        {
-            G.SolveTime();
-            GSV.DTIME = 1.2f * Time.smoothDeltaTime;
-        }
-
         private void Start()
         {
-            SysCore.SetupFrameRateGlobal();
-
             G.isRoundStarted = true;
 
-            // линкуем кнопки с игроком
-            gamepad.AddListener(GamePad); 
+            SysCore.SetupFrameRateGlobal();
 
-            // стата при победе
-            eve.OnBossKilled.AddListener(this, _ => { OnVictory(); });
+            Eve.OnBossKilled.AddListener (this, x => {
+                Eve.OnGameOver.FireEvent (true);
+                OnVictory ();
+            });
 
-            // ПЕРЕДЕЛАТЬ , там старьё!!!!!!!!!!!!!!!
-            /// Бл, Надо срочно переделать. Нахер это здесь вообще. Да и сам INIT это с 90х
+            Eve.OnPlayerImpact.AddListener (this, x => {
+                Eve.OnGameOver.FireEvent (false);
+                OnFail ();
+            });
+
+            Eve.OnPlayerKilled.AddListener (this, x => {
+                Eve.OnGameOver.FireEvent (false);
+                OnFail ();
+            });
+
             SoundManager.Init();
+
+            di.GamePad.OnButtonTouch += GamePad_OnButtonTouch;
         }
 
-        private void OnDestroy()
+        void GamePad_OnButtonTouch (GAME_BUTTON btn, bool isPressed)
+        {
+            if (isPressed && btn == GAME_BUTTON.EDITOR)
+            {
+                SceneLoader.Editor ();
+            }
+        }
+
+        void OnDestroy()
         {
             G.ResetStaticData();
 
@@ -44,17 +66,18 @@ namespace RBGame
                 Debug.LogWarning("DOTween.KillAll> count: " + c.ToString());
         }
 
-        /// <summary>
-        /// Босс уничтожен/ Конец раунда
-        /// </summary>
-        private void OnVictory() 
+        // Конец раунда
+        void OnFail ()
         {
-            bot.SetStoppedDist(ConfDB.game.StoppedDist);
+            AMPLITUDE.level_end (StageManager.stageNUM, false);            
+        }
 
+        // Конец раунда
+        void OnVictory() 
+        {
             // ПЕРЕДЕЛАТЬ. Пускай сами подписываются
             GglStat.EvLevelDone((int)StageManager.stageNUM, true, false);
             AMPLITUDE.level_end(StageManager.stageNUM, true);
-            
 
             if (G.isTutorEnable && StageManager.stageNUM == 1)
             {
@@ -73,22 +96,8 @@ namespace RBGame
                     Debug.LogError("FB> Send TutorComplete err. " + e.ToString());
                 }
             }
+
             ConfDB.SaveStat ();
-        }
-
-
-        /// <summary>
-        /// Линкуем ядро с GAMEPAD
-        /// </summary>
-        private void GamePad(GAME_BUTTON btn, bool isPressed)
-        {
-            switch (btn)
-            {
-                case GAME_BUTTON.EDITOR: SceneLoader.Editor(); break;
-                case GAME_BUTTON.RESTART: SceneLoader.Game(); break;
-                case GAME_BUTTON.MENU: SceneLoader.Menu(); break;
-                default: eve.OnButtonPress.FireEvent(new ButtonPress { btn = btn, isPressed = isPressed }); break;
-            }
         }
     }
 }

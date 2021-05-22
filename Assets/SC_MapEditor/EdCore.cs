@@ -81,7 +81,6 @@ public class EdCore : MonoBehaviour
         //  Запомним, что в режиме редактирования        
         G.isEditMode = true;
         G.isRoundStarted = false;
-        G.ResetTime ();
 
         //  НЕ Пауза. Тогда будут все анимации видны
         G.SetPause (false);
@@ -245,8 +244,6 @@ public class EdCore : MonoBehaviour
             if (e.go != null)
                 e.go.XUpdate (G.deltaTime, dd);
         }
-
-        G.SolveTime ();
 
 #if (UNITY_EDITOR) || (UNITY_WIN)
         isDeleteMode = Input.GetKey (KeyCode.E); // erease

@@ -22,6 +22,10 @@ namespace RBGame
         {
             nextBtn.onClick.AddListener(() => 
             {
+                /* 
+                 *  Не очень хорошо, когда вот так. Лучше бы GameUIManager подписался на нажатие
+                 *  А то не видно, что сцену меняет. Да и второе окно Win_Defeat 
+                 * */
                 SceneLoader.Menu();
             });
         }

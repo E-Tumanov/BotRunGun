@@ -19,22 +19,32 @@ namespace RBGame
             sphere.material.color = clr;
         }
 
-        float speed = 50;
-        private void Start ()
+        public float speed = 50;
+        private void Awake ()
         {
             transform.position = di.PlayerModel.position + Vector3.up * 1.5f;
             transform.LookAt (di.BattleManager.Boss.GetPivot () + Random.onUnitSphere * 0.5f);
+
+            GetComponent<Rigidbody> ().AddForce (Vector3.forward * speed, ForceMode.VelocityChange);
+            /*
             MTask.Run (this, 0, 2, t => {
                 transform.position = transform.position + transform.forward * speed * Time.deltaTime;
             },() => Destroy (this.gameObject));
+            */
         }
-
+        private void Update ()
+        {
+            
+        }
         private void OnTriggerEnter (Collider other)
         {
+            if (other.CompareTag ("Player"))
+                return;
+
             speed = 0;
             GetComponent<SphereCollider> ().enabled = false;
             sphere.gameObject.SetActive (false);
-            Destroy (gameObject, 0.1f);
+            Destroy (gameObject);//, 0.1f);
         }
     }
 }

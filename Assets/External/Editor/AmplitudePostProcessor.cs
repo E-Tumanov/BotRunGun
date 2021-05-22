@@ -1,11 +1,13 @@
 ﻿using UnityEditor;
 using UnityEditor.Callbacks;
+#if (UNITY_IOS)
 using UnityEditor.iOS.Xcode;
-
+#endif
 public static class AmplitudePostProcessor {
 
   [PostProcessBuild]
   public static void OnPostProcessBuild(BuildTarget buildTarget, string buildPath) {
+#if (UNITY_IOS)
     if (buildTarget == BuildTarget.iOS) {
       var projPath = string.Concat(buildPath, "/Unity-iPhone.xcodeproj/project.pbxproj");
       var proj = new PBXProject();
@@ -21,6 +23,8 @@ public static class AmplitudePostProcessor {
       proj.AddBuildProperty(targetGuid, "OTHER_LDFLAGS", "-lsqlite3.0");
       proj.SetBuildProperty(targetGuid, "GCC_ENABLE_OBJC_EXCEPTIONS", "YES");
       proj.WriteToFile(projPath);
+
     }
-  }
+#endif
+    }
 }

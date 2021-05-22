@@ -25,22 +25,24 @@ namespace RBGame
 
         private void Start()
         {           
-            eve.OnPlayerKilled.AddListener(this, x =>
+            Eve.OnPlayerKilled.AddListener(this, x =>
             {
                 HideMsg();
                 ShowMsg(Locale.Get("defeat"));
             });
 
-            eve.OnBossKilled.AddListener(this, x =>
+            Eve.OnBossKilled.AddListener(this, x =>
             {
                 HideMsg();
+                /*
                 DOTween.Sequence().AppendInterval(0.5f).OnComplete(() =>
                 {
                     ShowMsg(Locale.Get("victory"), 200);
                 }).SetLink(gameObject);
+                */
             });
 
-            eve.OnBuyBullet.AddListener(this, x =>
+            Eve.OnBuyBullet.AddListener(this, x =>
             {
                 HideMsg();
                 if (x.value > 0)
@@ -49,7 +51,7 @@ namespace RBGame
 
             if (G.isTutorEnable)
             {
-                eve.OnPlayerFinished.AddListener (this, x =>
+                Eve.OnPlayerFinished.AddListener (this, x =>
                  {
                      HideMsg ();
                      DOTween.Sequence ().AppendInterval (0.5f).OnComplete (() =>

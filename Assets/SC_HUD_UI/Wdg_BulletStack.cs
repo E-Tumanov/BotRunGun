@@ -40,7 +40,7 @@ namespace RBGame
 
             OnChangeCount(ballsManager.CurrCount, ballsManager.CurrCount);
 
-            eve.OnPlayerShot.AddListener(this, x =>
+            Eve.OnPlayerShot.AddListener(this, x =>
             {
                 if (x.isMissShot)
                 {

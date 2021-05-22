@@ -43,7 +43,7 @@ public class ItemHMover : Item
         mCurPoint = mStartPivotPos.x;
 
         // стартовое направление и скорость
-        mDir = 2 * param[2].AsFloat;
+        mDir = 3 * param[2].AsFloat;
 
         if (!G.isRoundStarted) // создан, но раунд не запущен - значит редактор
         {
@@ -118,15 +118,24 @@ public class ItemHMover : Item
             Destroy(mDescFloor.gameObject);
     }
 
-    
+    private void OnTriggerEnter (Collider other)
+    {
+        if (other.CompareTag ("Player"))
+        {
+            di.TripManager.CollisionItemTest (this);
+        }
+    }
 
     public override bool XCollision(UpdateData data)
     {
+        return false;
+        /*
         if (Mathf.Abs(transform.position.z - data.playerPos.y) > 2)
             return false;
 
         bool isCollison = (new Vector2(transform.position.x, transform.position.z) - data.playerPos).magnitude < (extRad + data.playerRad);
         return isCollison;
+        */
     }
 
 

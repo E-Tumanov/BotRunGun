@@ -1,20 +1,20 @@
 {
     "user_id": 0,
-    "app_version": 520,
+    "app_version": 540,
     "cfg_version": 0,
-    "use_dao_control": 1,
+    "use_dao_control": 0,
     "use_vibro": 1,
     "use_sound": 1,
     "player_name": "none",
-    "ver": 497,
-    "run_app": 51,
+    "ver": 144,
+    "run_app": 1,
     "run_editor": 0,
     "time_app": 0,
     "time_editor": 0,
     "total_distance": 0,
     "total_distance_round": 0,
     "total_distance_editor": 0,
-    "total_coins": 4060,
+    "total_coins": 6330,
     "total_jewels": 0,
     "total_box": 0,
     "tutor_complete": 1,
@@ -22,19 +22,19 @@
         {
             "id": 101,
             "ver": 0,
-            "run_count": 4,
+            "run_count": 1,
             "restart_count": 0,
-            "max_coin": 10,
+            "max_coin": 95,
             "max_jewel": 0,
             "max_star": 0,
-            "is_complete": 2
+            "is_complete": 1
         },
         {
             "id": 102,
             "ver": 0,
             "run_count": 1,
             "restart_count": 0,
-            "max_coin": 110,
+            "max_coin": 95,
             "max_jewel": 0,
             "max_star": 0,
             "is_complete": 1
@@ -42,9 +42,9 @@
         {
             "id": 103,
             "ver": 0,
-            "run_count": 1,
+            "run_count": 12,
             "restart_count": 0,
-            "max_coin": 130,
+            "max_coin": 95,
             "max_jewel": 0,
             "max_star": 0,
             "is_complete": 1
@@ -52,19 +52,19 @@
         {
             "id": 104,
             "ver": 0,
-            "run_count": 0,
+            "run_count": 4,
             "restart_count": 0,
-            "max_coin": 0,
+            "max_coin": 95,
             "max_jewel": 0,
             "max_star": 0,
-            "is_complete": 0
+            "is_complete": 1
         },
         {
             "id": 105,
             "ver": 0,
-            "run_count": 0,
+            "run_count": 4,
             "restart_count": 0,
-            "max_coin": 0,
+            "max_coin": 95,
             "max_jewel": 0,
             "max_star": 0,
             "is_complete": 0
@@ -72,9 +72,9 @@
         {
             "id": 106,
             "ver": 0,
-            "run_count": 0,
+            "run_count": 2,
             "restart_count": 0,
-            "max_coin": 0,
+            "max_coin": 95,
             "max_jewel": 0,
             "max_star": 0,
             "is_complete": 0
@@ -82,9 +82,9 @@
         {
             "id": 107,
             "ver": 0,
-            "run_count": 0,
+            "run_count": 2,
             "restart_count": 0,
-            "max_coin": 0,
+            "max_coin": 95,
             "max_jewel": 0,
             "max_star": 0,
             "is_complete": 0
@@ -92,9 +92,9 @@
         {
             "id": 108,
             "ver": 0,
-            "run_count": 0,
+            "run_count": 1,
             "restart_count": 0,
-            "max_coin": 0,
+            "max_coin": 95,
             "max_jewel": 0,
             "max_star": 0,
             "is_complete": 0

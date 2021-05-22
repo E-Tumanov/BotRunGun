@@ -16,6 +16,7 @@ namespace RBGame
         [SerializeField] Button btnSoundSwitch;
         [SerializeField] Button btnVibroSwitch;
         [SerializeField] Button btnStageSelectorWin;
+        [SerializeField] Button btnRunEditor;
 
         [SerializeField] Transform oneTapControl;
         [SerializeField] Transform sideTapControl;
@@ -70,7 +71,11 @@ namespace RBGame
                 ConfDB.SaveStat();
             });
 
-            SetDao();
+            btnRunEditor.onClick.AddListener (() => {
+                SceneLoader.Editor ();
+            });
+
+            SetDao ();
             SetSound();
             SetVibro();
         }

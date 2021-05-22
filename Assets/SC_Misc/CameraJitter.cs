@@ -5,6 +5,8 @@ using UnityEngine;
 /*
 ========================================
 Слой анимации(тряска) для камеры
+
+DoTween где?
 ========================================
 */
 class JitLayer
@@ -102,7 +104,7 @@ public class CameraJitter : MonoBehaviour
     //  Трясти камеру
     public static void JitIt(float sec)
     {
-        jitCam.jit_it(sec);
+        //jitCam.jit_it(sec);
     }
 
     //  jitter TIME. Сам тайм всегда уменьшается.

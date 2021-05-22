@@ -46,6 +46,7 @@ public class RemboHM : GModel
         nmesh.RecalculateBounds();
 
         var num = Mathf.Clamp (colornum, 0, cfg.ColorWallList.Count - 1);
-        GetComponent<MeshRenderer> ().material.mainTexture = cfg.ColorWallList[num];
+       //   Работало. просто пока убрал
+        // GetComponent<MeshRenderer> ().material.mainTexture = cfg.ColorWallList[num];
     }
 }

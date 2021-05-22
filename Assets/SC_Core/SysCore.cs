@@ -23,7 +23,7 @@ public class SysCore : MonoBehaviour
         //https://support.unity3d.com/hc/en-us/articles/360000283043-Target-frame-rate-or-V-Blank-not-set-properly
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 60;
-        GSV.DTIME = 1.2f * 1 / Application.targetFrameRate;//0.048f;
+        //GSV.DTIME = 1.2f * 1 / Application.targetFrameRate;//0.048f;
 #endif
     }
 
@@ -132,8 +132,9 @@ public class SysCore : MonoBehaviour
     /// </summary>
     void Init()
     {
-        Debug.Log("NetCore> Start server data sync...");
 
+#if !(UNITY_EDITOR) && (TRUE)
+        Debug.Log("NetCore> Start server data sync...");
         //  качаем последний кэш
         try
         {
@@ -143,6 +144,7 @@ public class SysCore : MonoBehaviour
         {
             Debug.LogError("DownloadNewCache>" + e.ToString());
         }
+#endif
 
         // DEBUG. Эмуляция очистки кэша
         // PlayerPrefs.DeleteAll();
@@ -175,6 +177,7 @@ public class SysCore : MonoBehaviour
 
 
 #if (UNITY_ANDROID)
+        /*
         if (GSV.GOOGLE_ID != "none" && GSV.GOOGLE_ID != "0")
         {
             PlayerPrefs.SetInt("WAS_LOGINED", 1);
@@ -183,6 +186,7 @@ public class SysCore : MonoBehaviour
             NetCmd.DownloadSave();
             NetCmd.DownloadUserMaps();
         }
+        */
 #endif
 
         // Загрузка всех конфигов [ver, item_base, game_props, robike_bot, user_stat]

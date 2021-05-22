@@ -15,8 +15,8 @@ namespace RBGame
 
         private void Start()
         {
-            eve.OnBossKilled.AddListener(this, _ => { OnBossKilled(); });
-            eve.OnPlayerShot.AddListener(this, OnPlayerShot);            
+            Eve.OnBossKilled.AddListener(this, _ => { OnBossKilled(); });
+            Eve.OnPlayerShot.AddListener(this, OnPlayerShot);            
         }
 
 
@@ -43,15 +43,15 @@ namespace RBGame
             SoundManager.winner.Play();// аплодисменты
 
             //  И конфетииишки!
-            /*
+            
             var fx = Instantiate(fx_confetti_shower_rainbow);
-            var sz = bot.stoppedPos - 10;
+            var sz = bot.position.z;//.stoppedPos - 10;
             fx.position = new Vector3(0, di.GetUpOffset(sz) + 11, sz);
-            */
-
+            
+            /*
             var fx = Instantiate(fx_bengal_GROUP);
             var sz = bot.position.z;
-            fx.position = new Vector3(0, di.GetUpOffset (sz), sz);
+            fx.position = new Vector3(0, di.GetUpOffset (sz), sz);*/
         }
     }
 }

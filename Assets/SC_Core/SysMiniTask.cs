@@ -1,21 +1,9 @@
 ﻿using UnityEngine;
 using System.Threading.Tasks;
 
-/*
-=====================================================
-Copyright 2020 Evgeny Tumanov
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-tumanfunc@gmail.com
-2020 Moscow 
-=====================================================
-*/
 
 /// <summary>
-/// Тривиальный менеджер задачек
+/// 
 /// </summary>
 public static class MTask
 {
@@ -30,8 +18,8 @@ public static class MTask
         float periodTime,
         int periodCount,
         System.Func<bool> onPerionDoneAction,
-        System.Func<float, bool> action = null,
-        System.Func<bool> onFinalAction = null)
+        System.Action<float> actionDuringLoop = null,
+        System.Action<bool> onFinalAction = null)
     {
         if (periodTime == 0)
         {
@@ -45,21 +33,20 @@ public static class MTask
             return;
         }
 
-        var etm = Time.time + periodTime;
+        var etm = Time.unscaledTime + periodTime;
         float currValue = 0;
         bool continueLoopResult = true;
 
         while (linkedObject && (periodCount-- != 0) && continueLoopResult)
         {
-            while (etm > Time.time && continueLoopResult)
+            while (etm > Time.unscaledTime && continueLoopResult)
             {
-                /*
-                Пока убрал цикл-блок. Сейчас только ТИК
+
                 try
                 {
-                    if (linkedObject && action != null)
+                    if (linkedObject && actionDuringLoop != null)
                     {
-                        continueLoopResult = action (Mathf.Clamp01 (currValue / periodTime));
+                        actionDuringLoop (Mathf.Clamp01 (currValue / periodTime));
                     }
                 }
                 catch (System.Exception e)
@@ -67,25 +54,24 @@ public static class MTask
                     Debug.LogError ("MTaskRun.Loop> " + e.ToString ());
                     return;
                 }
-                */
-                currValue += Time.deltaTime;
+
+                currValue += Time.unscaledDeltaTime;
                 await Task.Yield ();
             }
 
-
             // reset
-            etm = Time.time + periodTime;
+            etm = Time.unscaledTime + periodTime;
             currValue = 0;
 
-            if (!onPerionDoneAction ())
-                return;
+            if (onPerionDoneAction != null)
+                onPerionDoneAction ();
 
             await Task.Yield ();
 
             /*
             else if (continueLoopResult)
                 await Task.Yield ();
-                */
+            */
         }
     }
 
@@ -98,8 +84,8 @@ public static class MTask
         float delayTime,
         System.Action action = null)
     {
-        var dtm = Time.time + delayTime;
-        while (dtm > Time.time) 
+        var dtm = Time.unscaledTime + delayTime;
+        while (dtm > Time.unscaledTime) 
             await Task.Yield ();
 
         try
@@ -111,7 +97,7 @@ public static class MTask
         }
         catch (System.Exception e)
         {
-            Debug.LogWarning ("MTaskRun.Run> " + e.ToString ());
+            Debug.LogError ("MTaskRun> " + e.ToString ());
             return;
         }
     }
@@ -123,9 +109,10 @@ public static class MTask
         float delayTime,
         System.Action action = null)
     {
-        var dtm = Time.time + delayTime;
-        while (dtm > Time.time)
+        var dtm = Time.unscaledTime + delayTime;
+        while (dtm > Time.unscaledTime)
             await Task.Yield ();
+
 
         try
         {
@@ -133,7 +120,7 @@ public static class MTask
         }
         catch (System.Exception e)
         {
-            Debug.LogWarning ("MTaskRun.Run> " + e.ToString ());
+            Debug.LogError ($"MTaskRun> {e.ToString ()} tm: {delayTime}");
             return;
         }
     }
@@ -141,6 +128,7 @@ public static class MTask
 
     /// <summary>
     /// Выполнять в течении времени, начиная с задержкой. Линк к объекту.
+    /// action<Timer01:float> - часто нужно нормализованное время в обработчик
     /// </summary>
     public static async void Run (
         UnityEngine.Object linkedObject,
@@ -149,20 +137,20 @@ public static class MTask
         System.Action<float> action,
         System.Action onComplete = null)
     {
-        var dtm = Time.time + delayTime;
-        while (dtm > Time.time)
+        var dtm = Time.unscaledTime + delayTime;
+        while (dtm > Time.unscaledTime)
             await Task.Yield ();
 
-        var etm = Time.time + elapsedTime;
+        var etm = Time.unscaledTime + elapsedTime;
         float currValue = 0;
         if (elapsedTime == 0)
         {
             currValue = 1;
             elapsedTime = 1;
-            etm = Time.time + 1;
+            etm = Time.unscaledTime + 1;
         }
 
-        while (etm > Time.time)
+        while (etm > Time.unscaledTime)
         {
             try
             {
@@ -173,10 +161,10 @@ public static class MTask
             }
             catch (System.Exception e)
             {
-                Debug.LogWarning ("MTaskRun.Run> " + e.ToString ());
+                Debug.LogError ("MTaskRun> " + e.ToString ());
                 return;
             }
-            currValue += Time.deltaTime;
+            currValue += Time.unscaledDeltaTime;
             await Task.Yield ();
         }
 
@@ -189,13 +177,14 @@ public static class MTask
         }
         catch (System.Exception e)
         {
-            Debug.LogWarning ("MTaskRun.Run> " + e.ToString ());
+            Debug.LogError ("MTaskRun> " + e.ToString ());
             return;
         }
     }
 
     /// <summary>
     /// Выполнять в течении времени, начиная с задержкой. Без линковки к объекту.
+    /// action<Timer01:float> - часто нужно нормализованное время в обработчик
     /// </summary>
     public static async void Run (
         float delayTime,
@@ -203,20 +192,20 @@ public static class MTask
         System.Action<float> action,
         System.Action onComplete = null)
     {
-        var dtm = Time.time + delayTime;
-        while (dtm > Time.time)
+        var dtm = Time.unscaledTime + delayTime;
+        while (dtm > Time.unscaledTime)
             await Task.Yield ();
 
-        var etm = Time.time + elapsedTime;
+        var etm = Time.unscaledTime + elapsedTime;
         float currValue = 0;
         if (elapsedTime == 0)
         {
             currValue = 1;
             elapsedTime = 1;
-            etm = Time.time + 1;
+            etm = Time.unscaledTime + 1;
         }
 
-        while (etm > Time.time)
+        while (etm > Time.unscaledTime)
         {
             try
             {
@@ -224,10 +213,10 @@ public static class MTask
             }
             catch (System.Exception e)
             {
-                Debug.LogWarning ("MTaskRun.Run> " + e.ToString ());
+                Debug.LogError ("MTaskRun> " + e.ToString ());
                 return;
             }
-            currValue += Time.deltaTime;
+            currValue += Time.unscaledDeltaTime;
             await Task.Yield ();
         }
 
@@ -252,7 +241,7 @@ public static class MTask
         }
         catch (System.Exception e)
         {
-            Debug.LogWarning ("MTaskRun.Run> " + e.ToString ());
+            Debug.LogError ("MTaskRun> " + e.ToString ());
             return;
         }
     }

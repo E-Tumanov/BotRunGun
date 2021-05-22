@@ -20,11 +20,14 @@ namespace RBGame
 
             di.BallsManager.OnAddGroup += BallsManager_OnAddGroup;
             di.BallsManager.OnDelGroup += BallsManager_OnDelGroup;
-            di.eve.OnPlayerFinished.AddListener (this, x => UpdateShotBall());
+            Eve.OnPlayerFinished.AddListener (this, x => UpdateShotBall ());
 
-            eve.OnPlayerShot.AddListener (this, x =>
-            {
+            Eve.OnPlayerShot.AddListener (this, x => {
                 UpdateShotBall ();
+            });
+
+            Eve.OnGameOver.AddListener (this, x => {
+                gameObject.SetActive (false);
             });
         }
 
@@ -40,8 +43,7 @@ namespace RBGame
             }
             currBallShot.gameObject.SetActive (true);
             currBallShot.sprite = ball[colorNum].GetComponent<Image> ().sprite;
-            MTask.Run (currBallShot, 0, 0.25f, t =>
-            {
+            MTask.Run (currBallShot, 0, 0.25f, t => {
                 currBallShot.transform.localScale = Vector3.one * cvPopUp.Evaluate (t);
             });
         }
@@ -60,9 +62,8 @@ namespace RBGame
         {
             var tr = Instantiate (ball[grp.GroupNum % 4], transform, false);
             tr.gameObject.SetActive (true);
-            MTask.Run (tr, 0, 0.5f, t =>
-            {
-                tr.localScale = cvPopUp.Evaluate (t) * Vector3.one * (1 + grp.MaxCount / 6.0f);
+            MTask.Run (tr, 0, 0.5f, t => {
+                tr.localScale = cvPopUp.Evaluate (t) * Vector3.one * 2;// * (1 + grp.MaxCount / 6.0f);
             });
         }
     }

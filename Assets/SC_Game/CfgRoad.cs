@@ -19,7 +19,7 @@ public class CfgRoad : ScriptableObject
     public float GetUpOffset(float currZ)
     {
         float u = UCoordScale * (currZ) / (0.001f + NormalDistance);
-        return roadY.Evaluate (u) * AmpScaleY - 0.10f * currZ; // чтоб всё время под уклон
+        return 0;// roadY.Evaluate (u) * AmpScaleY - 0.10f * currZ; // чтоб всё время под уклон
     }
 
     public List<Color32> ColorStack;

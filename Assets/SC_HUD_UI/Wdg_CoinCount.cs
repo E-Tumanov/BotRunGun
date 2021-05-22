@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 namespace RBGame
 {
     /// <summary>
@@ -10,7 +10,7 @@ namespace RBGame
     /// </summary>
     public class Wdg_CoinCount : GModel
     {
-        [SerializeField] Text coinCount;
+        [SerializeField] TMP_Text coinCount;
         int total;
 
         private void Awake ()

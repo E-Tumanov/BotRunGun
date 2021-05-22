@@ -17,7 +17,9 @@ namespace RBGame
             {
                 gun.forward = Vector3.Lerp (srot, trot, t * 1.2f);
             },
-            () => OnAimed ());
+            () => {
+                OnAimed ();
+            });
         }
     }
 }

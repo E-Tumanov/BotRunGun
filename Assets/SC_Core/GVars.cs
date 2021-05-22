@@ -5,10 +5,9 @@
 /// </summary>
 public static class G
 {
-    public static float time { get; private set; }
-    public static int   tick { get; private set; }
-
-    public static float deltaTime => GSV.DTIME;
+    public static float time => Time.unscaledTime;
+    public static int tick => Time.frameCount;
+    public static float deltaTime => Time.unscaledDeltaTime;
 
     public static bool isTutorEnable = false;
     public static bool isEditMode = true;
@@ -20,32 +19,14 @@ public static class G
 
     public static void ResetStaticData()
     {
-        time = 0;
-        tick = 0;
         isRoundStarted = false;
         isPause = false;
     }
 
-    public static void ResetTime()
-    {
-        time = 0;
-        tick = 0; 
-    }
-
-    public static void SolveTime()
-    {
-        time += G.deltaTime;
-        tick++;
-    }
-
-
     // Поставить игру на паузу
+    // Сечас нету паузы
     public static void SetPause(bool pause)
     {
         isPause = pause;
-
-        // сообщим подписчикам
-        // Сейчас нет ни одного подписчика, т.к. по задумке ПАУЗЫ в игре нет
-        //cx.EVENT.Send(new PauseEvent { isPause = G.isPause });
     }
 }

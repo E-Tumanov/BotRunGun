@@ -1,62 +1,66 @@
 {
-    "use_any_tap": {
-        "ru": "ЛЮБОЙ ТАП МЕНЯЕТ НАКЛОН",
-        "en": "USE ANY TAP"
-    },
-    "use_sides_tap": {
-        "ru": "ТАП ПО КРАЯМ МЕНЯЕТ НАКЛОН",
-        "en": "USE SIDES"
-    },
-    "tap_2_play": {
-        "ru": "Жми!",
-        "en": "TAP TO PLAY"
-    },
-    "level": {
-        "ru": "Уровень",
-        "en": "Level"
-    },
-    "swing_left": {
-        "ru": "НАКЛОН ВЛЕВО",
-        "en": "SWING LEFT"
-    },
-    "swing_right": {
-        "ru": "НАКЛОН ВПРАВО",
-        "en": "SWING RIGHT"
-    },
-    "ttr_long_tap2speed": {
-        "ru": "Жми долго - ускорение",
-        "en": "Use long-tap to move faster"
-    },
-    "ttr_collect_coins": {
-        "ru": "Собирай ящики с патронами",
-        "en": "Collect green box to get ammo"
-    },
-    "tap_faster": {
-        "ru": "Победи стража!",
-        "en": "Hit the guardian!"
-    },
-    "victory": {
-        "ru": ["Отлично! Победа!","Супер!\nТы молодец!","Прекрасный выстрел.\nПобеда!"],
-        "en": "VICTORY!"
-    },
-    "defeat": {
-        "ru": "Злой босс победил тебя.\nПопытаешься еще разок?",
-        "en": "You loose"
-    },
-    "finish_him": {
-        "ru": "Стреляй быстрей!\nОсталось чуть-чуть",
-        "en": "FINISH HIM!"
-    },
-	"props_control":{
-		"ru": "УПРАВЛЕНИЕ",
-        "en": "CONTROL"
-	},
-	"props_sound":{
-		"ru": "ЗВУК",
-        "en": "SOUND"
-	},
-	"props_vibro":{
-		"ru": "ДРЕЛЬ",
-        "en": "VIBRATION"
-	}
+   "use_any_tap" : {
+      "ru" : "ЛЮБОЙ ТАП МЕНЯЕТ НАКЛОН",
+      "en" : "USE ANY TAP"
+   },
+   "use_sides_tap" : {
+      "ru" : "ТАП ПО КРАЯМ МЕНЯЕТ НАКЛОН",
+      "en" : "USE SIDES"
+   },
+   "tap_2_play" : {
+      "ru" : "Жми!",
+      "en" : "TAP TO PLAY"
+   },
+   "level" : {
+      "ru" : "Уровень",
+      "en" : "Level"
+   },
+   "swing_left" : {
+      "ru" : "НАКЛОН ВЛЕВО",
+      "en" : "SWING LEFT"
+   },
+   "swing_right" : {
+      "ru" : "НАКЛОН ВПРАВО",
+      "en" : "SWING RIGHT"
+   },
+   "ttr_long_tap2speed" : {
+      "ru" : "Жми долго - ускорение",
+      "en" : "Use long-tap to move faster"
+   },
+   "ttr_collect_coins" : {
+      "ru" : "Собирай ящики с патронами",
+      "en" : "Collect green box to get ammo"
+   },
+   "tap_faster" : {
+      "ru" : "Победи стража!",
+      "en" : "Hit the guardian!"
+   },
+   "victory" : {
+      "ru" : [
+         "Отлично! Победа!",
+         "Супер!\nТы молодец!",
+         "Прекрасный выстрел.\nПобеда!"
+      ],
+      "en" : "VICTORY!"
+   },
+   "defeat" : {
+      "ru" : "Злой босс победил тебя.\nПопытаешься еще разок?",
+      "en" : "You loose"
+   },
+   "finish_him" : {
+      "ru" : "Стреляй быстрей!\nОсталось чуть-чуть",
+      "en" : "FINISH HIM!"
+   },
+   "props_control" : {
+      "ru" : "УПРАВЛЕНИЕ",
+      "en" : "CONTROL"
+   },
+   "props_sound" : {
+      "ru" : "ЗВУК",
+      "en" : "SOUND"
+   },
+   "props_vibro" : {
+      "ru" : "ДРЕЛЬ",
+      "en" : "VIBRATION"
+   }
 }

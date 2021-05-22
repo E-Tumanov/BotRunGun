@@ -37,6 +37,7 @@ namespace RBGame
                 nextTime = Time.time + 2;
                 Instantiate (fxImpactBrona, transform);
             }
+
             OnHit (this, other);
         }
     }

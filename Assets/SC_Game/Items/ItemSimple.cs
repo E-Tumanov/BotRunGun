@@ -15,6 +15,7 @@ public class ItemSimple : Item
 
     public AudioSource get_sound;
     public GameObject FX;
+    public GameObject impactFx;
 
     [SerializeField] List<Color32> groupColor;
     [SerializeField] List<Material> groupMaterial;
@@ -34,6 +35,7 @@ public class ItemSimple : Item
 
     public override void RemoveFromScene (bool isCollected)
     {
+
         if (isCollected && FX)
         {
             var p = transform.position;
@@ -59,8 +61,25 @@ public class ItemSimple : Item
     }
 
 
+
+    private void OnTriggerEnter (Collider other)
+    {
+        if (other.CompareTag ("Player"))
+        {
+            di.TripManager.CollisionItemTest (this);
+            if (impactFx)
+            {
+                Instantiate (impactFx, null, false).transform.position = di.PlayerModel.position + Vector3.up * 1;
+                //other.con
+                //var pos = transform.position + other.contactOffset;
+            }
+        }
+    }
+
     public override bool XCollision (UpdateData data)
     {
+        return false;
+        /*
         if (Mathf.Abs (transform.position.z - data.playerPos.y) > 2)
             return false;
 
@@ -92,7 +111,7 @@ public class ItemSimple : Item
         else
         {
             return (new Vector2 (transform.position.x, transform.position.z) - ppos).magnitude < (extRad + prad);
-        }
+        }*/
     }
 
     public override void XUpdate (float dt, UpdateData data)

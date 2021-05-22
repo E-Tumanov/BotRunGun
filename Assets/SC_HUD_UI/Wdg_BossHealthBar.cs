@@ -18,7 +18,7 @@ namespace RBGame
         {
             //FindObjectOfType<GameHUD> ().Append (transform);
 
-            eve.OnBossRecieveDamage.AddListener (this, x =>
+            Eve.OnBossRecieveDamage.AddListener (this, x =>
             {
                 var currHP = x.boss.CurrHP;
                 var prevHP = x.boss.PrevHP;

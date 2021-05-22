@@ -25,13 +25,15 @@ namespace RBGame
 
     public interface IGamepad
     {
-        void AddListener(System.Action<GAME_BUTTON, bool> listener);
+        event System.Action<GAME_BUTTON, bool> OnButtonTouch;
+        event System.Action<GAME_BUTTON, bool, float> OnButtonTouchVel;
     }
 
 
     public class GamePad : MonoBehaviour, IGamepad, IPointerDownHandler, IPointerUpHandler
     {
-        event System.Action<GAME_BUTTON, bool> OnButtonTouch = delegate { };
+        public event System.Action<GAME_BUTTON, bool> OnButtonTouch = delegate { };
+        public event System.Action<GAME_BUTTON, bool, float> OnButtonTouchVel = delegate { };
 
         [SerializeField] Button menuBtn;
         [SerializeField] Button editorBtn;
@@ -39,27 +41,25 @@ namespace RBGame
 
         [SerializeField] Transform singleButton;
 
-        public void AddListener(System.Action<GAME_BUTTON, bool> listener)
-        {
-            OnButtonTouch += listener;
-        }
-
-        private void Start()
+        private void Start ()
         {
             // Кнопка "РЕДАКТ"
-            editorBtn.onClick.AddListener(() => OnButtonTouch(GAME_BUTTON.EDITOR, true));
-            editorBtn.gameObject.SetActive(G.isEditMode);
+            editorBtn.onClick.AddListener (() => OnButtonTouch (GAME_BUTTON.EDITOR, true));
+            editorBtn.gameObject.SetActive (G.isEditMode);
 
             // Кнопка "РЕСТАРТ"
-            restartBtn.onClick.AddListener(() => OnButtonTouch(GAME_BUTTON.RESTART, true));
-            restartBtn.gameObject.SetActive(G.isEditMode);
+            /*
+            restartBtn.onClick.AddListener (() => OnButtonTouch (GAME_BUTTON.RESTART, true));
+            restartBtn.gameObject.SetActive (G.isEditMode);
 #if (UNITY_EDITOR)
-            restartBtn.gameObject.SetActive(false);
+            restartBtn.gameObject.SetActive (false);
 #endif
+            */
+            restartBtn.gameObject.SetActive (false);
 
             // Кнопка "МЕНЮ"
-            menuBtn.onClick.AddListener(() => OnButtonTouch(GAME_BUTTON.MENU, true));
-            menuBtn.gameObject.SetActive(false);
+            menuBtn.onClick.AddListener (() => OnButtonTouch (GAME_BUTTON.MENU, true));
+            menuBtn.gameObject.SetActive (false);
             /*
             // Сброс мяча
             ballResetBtn.onClick.AddListener(() => OnButtonTouch(GAME_BUTTON._end, true));
@@ -67,14 +67,14 @@ namespace RBGame
             */
             //  Кнопки "УПРАВЛЕНИЕ" - главные
             var isDao = ConfDB.stat.use_dao_control == 1;
-            singleButton.gameObject.SetActive(true);
+            singleButton.gameObject.SetActive (true);
 
-/*
-#if !(ZX_RELEASE) // если не в релизе, то видна всегда.
-        menuBtn.gameObject.SetActive(true);
-        restartBtn.gameObject.SetActive(true);
-        ballResetBtn.gameObject.SetActive(true);
-#endif*/
+            /*
+            #if !(ZX_RELEASE) // если не в релизе, то видна всегда.
+                    menuBtn.gameObject.SetActive(true);
+                    restartBtn.gameObject.SetActive(true);
+                    ballResetBtn.gameObject.SetActive(true);
+            #endif*/
         }
 
         class PInfo
@@ -91,18 +91,18 @@ namespace RBGame
         bool rightBtPressed;
         float lastX;
 
-        public void OnPointerDown(PointerEventData pdata)
+        public void OnPointerDown (PointerEventData pdata)
         {
             if (point == null)
             {
                 point = pdata;
                 lastX = point.position.x;
-                
-                OnButtonTouch(GAME_BUTTON.MAIN, true);
+
+                OnButtonTouch (GAME_BUTTON.MAIN, true);
             }
         }
 
-        public void OnPointerUp(PointerEventData pdata)
+        public void OnPointerUp (PointerEventData pdata)
         {
             if (point != null)
             {
@@ -110,44 +110,62 @@ namespace RBGame
                 rightBtPressed = false;
                 point = null;
 
-                OnButtonTouch(GAME_BUTTON.MAIN, false);
+                OnButtonTouch (GAME_BUTTON.MAIN, false);
             }
         }
-        
-        void SolvePoint()
+
+        float ScreenVel (float delta)
         {
-            OnButtonTouch(GAME_BUTTON.LEFT, leftBtPressed);
-            OnButtonTouch(GAME_BUTTON.RIGHT, rightBtPressed);
+            return delta / (float)Screen.width;
+        }
 
-            if (point == null)
-                return;
-
-            if (point.position.x - lastX > 25)
+        void SolvePoint ()
+        {
+            if (point != null)
             {
+                if (point.position.x - lastX > 5) // right
+                {
+                    OnButtonTouch (GAME_BUTTON.LEFT, false);
+                    OnButtonTouch (GAME_BUTTON.RIGHT, true);
+                }
+
+                if (point.position.x - lastX < -5)
+                {
+                    OnButtonTouch (GAME_BUTTON.LEFT, false);
+                    OnButtonTouch (GAME_BUTTON.RIGHT, true);
+                }
+
+                OnButtonTouchVel (GAME_BUTTON.MAIN, true, ScreenVel (point.position.x - lastX));
+                OnButtonTouchVel (GAME_BUTTON.LEFT, false, 0);
+                OnButtonTouchVel (GAME_BUTTON.RIGHT, false, 0);
+
+                OnButtonTouch (GAME_BUTTON.MAIN, true);
                 lastX = point.position.x;
-                rightBtPressed = true;
-                leftBtPressed = false;
             }
-            else if (point.position.x - lastX < -25)
+            else
             {
-                lastX = point.position.x;
-                leftBtPressed = true;
-                rightBtPressed = false;
+                OnButtonTouch (GAME_BUTTON.LEFT, false);
+                OnButtonTouch (GAME_BUTTON.RIGHT, false);
+                OnButtonTouchVel (GAME_BUTTON.LEFT, false, 0);
+                OnButtonTouchVel (GAME_BUTTON.RIGHT, false, 0);
+
+                OnButtonTouch (GAME_BUTTON.MAIN, false);
+                OnButtonTouchVel (GAME_BUTTON.MAIN, false, 0);
             }
         }
 
-        void OnApplicationPause(bool pauseStatus)
+        void OnApplicationPause (bool pauseStatus)
         {
-            G.SetPause(pauseStatus);
+            G.SetPause (pauseStatus);
         }
 
-        void Update()
+        void Update ()
         {
-            SolvePoint();
+            SolvePoint ();
 
 #if (UNITY_EDITOR)
-            OnButtonTouch (GAME_BUTTON.LEFT, Input.GetKey(KeyCode.Q));
-            OnButtonTouch (GAME_BUTTON.RIGHT, Input.GetKey (KeyCode.E));
+            OnButtonTouch (GAME_BUTTON.LEFT, Input.GetKey (KeyCode.A));
+            OnButtonTouch (GAME_BUTTON.RIGHT, Input.GetKey (KeyCode.D));
 #endif            
             /*
             //  Для SmartTV посмотреть код нажатой клавки
@@ -163,31 +181,31 @@ namespace RBGame
             //  Кнопки джойстика/пульта
             // Только DAO CONTROL
             {
-                if (Input.GetKeyDown(KeyCode.Joystick1Button0) ||
-                    Input.GetKeyDown(KeyCode.Joystick2Button0) ||
-                    Input.GetKeyDown(KeyCode.Joystick3Button0)
+                if (Input.GetKeyDown (KeyCode.Joystick1Button0) ||
+                    Input.GetKeyDown (KeyCode.Joystick2Button0) ||
+                    Input.GetKeyDown (KeyCode.Joystick3Button0)
                     )
                 {
-                    OnButtonTouch(GAME_BUTTON.MAIN, true);
+                    OnButtonTouch (GAME_BUTTON.MAIN, true);
                 }
-                if (Input.GetKeyUp(KeyCode.Joystick1Button0) ||
-                    Input.GetKeyUp(KeyCode.Joystick2Button0) ||
-                    Input.GetKeyUp(KeyCode.Joystick3Button0)
+                if (Input.GetKeyUp (KeyCode.Joystick1Button0) ||
+                    Input.GetKeyUp (KeyCode.Joystick2Button0) ||
+                    Input.GetKeyUp (KeyCode.Joystick3Button0)
                     )
                 {
-                    OnButtonTouch(GAME_BUTTON.MAIN, false);
+                    OnButtonTouch (GAME_BUTTON.MAIN, false);
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown (KeyCode.R))
             {
-                OnButtonTouch(GAME_BUTTON.RESTART, true);
+                OnButtonTouch (GAME_BUTTON.RESTART, true);
             }
 
             // Пауза по ВНЕШНЕЙ кнопке
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown (KeyCode.Escape))
             {
-                G.SetPause(!G.isPause);
+                G.SetPause (!G.isPause);
             }
         }
     }
