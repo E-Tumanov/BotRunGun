@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -34,6 +35,8 @@ namespace RBGame
     {
         public event System.Action<GAME_BUTTON, bool> OnButtonTouch = delegate { };
         public event System.Action<GAME_BUTTON, bool, float> OnButtonTouchVel = delegate { };
+        // <btn, start_pos, cur_pos>
+        public event System.Action<GAME_BUTTON, float, float> OnDragX = delegate { };
 
         [SerializeField] Button menuBtn;
         [SerializeField] Button editorBtn;
@@ -97,8 +100,8 @@ namespace RBGame
             {
                 point = pdata;
                 lastX = point.position.x;
-
                 OnButtonTouch (GAME_BUTTON.MAIN, true);
+                OnDragX (GAME_BUTTON.MAIN,lastX, point.position.x);
             }
         }
 
@@ -119,6 +122,8 @@ namespace RBGame
             return delta / (float)Screen.width;
         }
 
+        public float sens;
+
         void SolvePoint ()
         {
             if (point != null)
@@ -136,11 +141,14 @@ namespace RBGame
                 }
 
                 OnButtonTouchVel (GAME_BUTTON.MAIN, true, ScreenVel (point.position.x - lastX));
+
                 OnButtonTouchVel (GAME_BUTTON.LEFT, false, 0);
                 OnButtonTouchVel (GAME_BUTTON.RIGHT, false, 0);
 
                 OnButtonTouch (GAME_BUTTON.MAIN, true);
-                lastX = point.position.x;
+                //lastX = Mathf.Lerp (lastX, point.position.x, sens);
+
+                OnDragX (GAME_BUTTON.MAIN, lastX, point.position.x);
             }
             else
             {

@@ -51,7 +51,7 @@ namespace RBGame
 
             botInfo = ConfDB.bot;
 
-            di.GamePad.OnButtonTouchVel += OnInput;
+            di.GamePad.OnDragX += GamePad_OnDragX;
 
             Eve.OnPlayerFinished.AddListener (this, x => SetStoppedDist (4));
             Eve.OnPlayerImpact.AddListener (this, x => {
@@ -96,8 +96,8 @@ namespace RBGame
             if (isFreez)
                 return;
 
-            SolveX (Time.smoothDeltaTime);
-            SolveY (Time.smoothDeltaTime);
+            SolveX (Time.deltaTime);
+            SolveY (Time.deltaTime);
         }
 
         public void SetPos (Vector3 newPos)
@@ -171,19 +171,56 @@ namespace RBGame
     public partial class PlayerMover
     {
         float shiftDir;
+        
         public float mul;
+        public float sens;
+        bool isPressed;
+        float startX, lastX;
+
         private void SolveX (float dt)
         {
+            //  begin
+            if (Input.GetMouseButton (0) && !isPressed)
+            {
+                startX = lastX = Input.mousePosition.x;
+                isPressed = true;
+            }
+
+            //  hold
+            if (Input.GetMouseButton (0) && isPressed)
+            {
+                lastX = Input.mousePosition.x;
+            }
+
+            //  end
+            if (!Input.GetMouseButton (0) && isPressed)
+            {
+                isPressed = false;
+            }
+
+            startX = Mathf.Lerp (startX, lastX, sens);
+            shiftDir = (lastX - startX) * 480 / Screen.width;
+
             ppos.x += mul * shiftDir * dt;
             ppos.x = Mathf.Clamp (ppos.x, di.CurrStage.LeftBorder, di.CurrStage.RightBorder);
         }
 
+
+        private void GamePad_OnDragX (GAME_BUTTON arg1, float sx, float cx)
+        {
+            //shiftDir = vel;// Mathf.Lerp(shiftDir, vel, 0.5f);
+        }
+
+
         public void OnInput (GAME_BUTTON btn, bool isPressed, float vel)
         {
+            /*
+            di.GamePad.sens = sens;
             if (btn == GAME_BUTTON.MAIN)
             {
-                shiftDir = Mathf.Lerp(shiftDir, vel, 0.5f);
+                shiftDir = vel;// Mathf.Lerp(shiftDir, vel, 0.5f);
             }
+            */
         }
     }
 }
