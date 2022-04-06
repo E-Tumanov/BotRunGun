@@ -10,7 +10,7 @@ QualitySettings:
     name: Android
     pixelLightCount: 1
     shadows: 1
-    shadowResolution: 0
+    shadowResolution: 1
     shadowProjection: 0
     shadowCascades: 1
     shadowDistance: 60

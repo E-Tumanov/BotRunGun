@@ -1,9 +1,12 @@
 fileFormatVersion: 2
 guid: a1e8415cfe85469f9aa0aea941166031
+<<<<<<< HEAD
 labels:
 - gvh
 - gvh_targets-editor
 - gvh_version-1.2.135.0
+=======
+>>>>>>> yso_DSK
 PluginImporter:
   externalObjects: {}
   serializedVersion: 2
