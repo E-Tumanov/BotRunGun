@@ -35,6 +35,6 @@ public static class SceneLoader
     // Выйти в "ГЛАВНОЕ МЕНЮ"
     public static void Menu()
     {
-        SceneManager.LoadScene("a_start");
+        SceneManager.LoadScene("MainScene");
     }
 }

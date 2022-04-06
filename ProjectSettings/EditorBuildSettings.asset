@@ -6,15 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/a_loader.unity
+    path: Assets/Scenes/AuxScene/a_loader.unity
     guid: 37e55884dbdb796479c0a2dfc2b96e99
   - enabled: 1
-    path: Assets/Scenes/a_start.unity
+    path: Assets/Scenes/MainScene.unity
     guid: 4a6b7156663966046b98333e411eb497
   - enabled: 1
-    path: Assets/Scenes/a_game.unity
+    path: Assets/Scenes/AuxScene/a_game.unity
     guid: 39d242125138c2846982b37bb0c91093
   - enabled: 1
-    path: Assets/Scenes/a_map_editor.unity
+    path: Assets/Scenes/AuxScene/a_map_editor.unity
     guid: 71e35543c6a94854b94e5c44fe3e8c19
   m_configObjects: {}
