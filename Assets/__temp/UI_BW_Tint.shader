@@ -1,5 +1,7 @@
 ﻿Shader "UI/zx_bw_gradient_tint"
 {
+
+
    Properties
    {
        [PerRendererData] _MainTex("Sprite Texture", 2D) = "white" {}
