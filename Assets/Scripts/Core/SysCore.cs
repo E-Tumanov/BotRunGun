@@ -2,7 +2,7 @@
 using UnityEngine;
 using SimpleJSON;
 using System;
-using Facebook.Unity;
+//using Facebook.Unity;
 using System.Threading.Tasks;
 using System.Threading;
 
@@ -66,7 +66,7 @@ public class SysCore : MonoBehaviour
     private void Start()
     {
 #if (TRUE)
-        FB.Init ();
+       // FB.Init ();
 #else
         Debug.LogWarning ("FB.Init(); ОТКЛЮЧЕНО");
 #endif

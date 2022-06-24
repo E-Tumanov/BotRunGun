@@ -1,5 +1,5 @@
 ﻿using DG.Tweening;
-using Facebook.Unity;
+//using Facebook.Unity;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -83,10 +83,8 @@ namespace RBGame
                 try
                 {
                     var parameters = new Dictionary<string, object>();
-                    //parameters[AppEventParameterName..Content] = contentData;
-                    //parameters[AppEventParameterName.ContentID] = contentId;
-                    parameters[AppEventParameterName.Success] = true;
-                    FB.LogAppEvent(AppEventName.CompletedTutorial, 1, parameters);
+                    //parameters[AppEventParameterName.Success] = true;
+                    //FB.LogAppEvent(AppEventName.CompletedTutorial, 1, parameters);
                     Debug.Log("FB> Send TutorComplete. OK");
                 }
                 catch (System.Exception e)

@@ -20,6 +20,8 @@ public class AdsBanner : MonoBehaviour
     {
 #if (UNITY_ANDROID)
         string adUnitId = "ca-app-pub-2640647163440835/5096694305";
+        //string adUnitId = "ca-app-pub-3940256099942544/6300978111"; - DEMO/DEVELOP
+        
 #elif (UNITY_IOS)
         string adUnitId = "ca-app-pub-2640647163440835/6620654605";
 #endif

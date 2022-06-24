@@ -2,7 +2,7 @@
 using UnityEngine;
 using SimpleJSON;
 using System;
-using Facebook.Unity;
+//using Facebook.Unity;
 using System.Threading.Tasks;
 using System.Threading;
 

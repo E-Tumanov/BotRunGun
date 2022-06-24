@@ -59,3 +59,4 @@ sysinfo.txt
 crashlytics-build.properties
 
 *.aab
+keystore/allcashgames.keystore

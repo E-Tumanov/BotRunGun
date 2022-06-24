@@ -49,7 +49,7 @@ PlayerSettings:
   defaultScreenWidthWeb: 400
   defaultScreenHeightWeb: 800
   m_StereoRenderingPath: 0
-  m_ActiveColorSpace: 1
+  m_ActiveColorSpace: 0
   m_MTRendering: 1
   m_StackTraceTypes: 020000000100000001000000010000000200000001000000
   iosShowActivityIndicatorOnLoading: -1
@@ -178,7 +178,7 @@ PlayerSettings:
   buildNumber:
     iPhone: 521
   AndroidBundleVersionCode: 552
-  AndroidMinSdkVersion: 21
+  AndroidMinSdkVersion: 23
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 0
   aotOptions: 
@@ -252,7 +252,7 @@ PlayerSettings:
   clonedFromGUID: 00000000000000000000000000000000
   templatePackageId: 
   templateDefaultScene: 
-  AndroidTargetArchitectures: 3
+  AndroidTargetArchitectures: 1
   AndroidSplashScreenScale: 2
   androidSplashScreen: {fileID: 0}
   AndroidKeystoreName: '{inproject}: KeyStore/allcashgames.keystore'
@@ -561,7 +561,7 @@ PlayerSettings:
     m_Automatic: 0
   - m_BuildTarget: AndroidPlayer
     m_APIs: 0b000000
-    m_Automatic: 0
+    m_Automatic: 1
   - m_BuildTarget: WebGLSupport
     m_APIs: 0b000000
     m_Automatic: 0
@@ -853,12 +853,12 @@ PlayerSettings:
   scriptingDefineSymbols:
     1: OBI_ONI_SUPPORTED
     4: ZX_RELEASE;GGL_BANNER;GGL_PAGE;GGL_REWARD;USE_AMPLITUDE;__IRON_REWARD;__DG_BALANCE;OBI_ONI_SUPPORTED
-    7: ZX_RELEASE;xGGL_BANNER;xGGL_PAGE;xGGL_REWARD;xUSE_AMPLITUDE;xIRON_BANNER;xIRON_PAGE;xIRON_REWARD;__DG_BALANCE;OBI_ONI_SUPPORTED
+    7: ZX_RELEASE;GGL_BANNER;GGL_PAGE;xGGL_REWARD;xUSE_AMPLITUDE;xIRON_BANNER;xIRON_PAGE;xIRON_REWARD;__DG_BALANCE;OBI_ONI_SUPPORTED
     13: ZX_RELEASE;xGGL_BANNER;xGGL_PAGE;xGGL_REWARD;xUSE_AMPLITUDE;__IRON_REWARD;__DG_BALANCE
   platformArchitecture:
     iPhone: 1
   scriptingBackend:
-    Android: 1
+    Android: 0
     iPhone: 1
   il2cppCompilerConfiguration: {}
   managedStrippingLevel: {}
