@@ -195,7 +195,7 @@ TextureImporter:
       213: 2490797639924686050
     second: ToolsIco_63
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 1
@@ -212,9 +212,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -223,12 +226,12 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: -1
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -246,10 +249,15 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -261,6 +269,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -273,6 +282,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -285,6 +295,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -297,6 +308,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -309,6 +321,20 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -1668,9 +1694,73 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      ToolsIco_10: -4785457780074547060
+      ToolsIco_11: 8608756410824254297
+      ToolsIco_12: -6113094849224351312
+      ToolsIco_13: -1143633066888572347
+      ToolsIco_14: -2606830543123344941
+      ToolsIco_15: -8655775506164669361
+      ToolsIco_16: -6797372588566613788
+      ToolsIco_17: 3343519217263389147
+      ToolsIco_18: -657979046245062462
+      ToolsIco_19: -2216858664848884709
+      ToolsIco_20: 5032963307154305664
+      ToolsIco_21: -5485402724286666785
+      ToolsIco_22: -8627886869392252865
+      ToolsIco_23: 4283484415835169865
+      ToolsIco_24: -174122941214723356
+      ToolsIco_25: 1607372116128963996
+      ToolsIco_26: -4209640304099043405
+      ToolsIco_27: 407913551343254701
+      ToolsIco_28: 7149126671022243068
+      ToolsIco_29: -105675264169260023
+      ToolsIco_30: -3001350682969399868
+      ToolsIco_31: -3280839635816366529
+      ToolsIco_32: -8343405033112613968
+      ToolsIco_33: -3709346740484912058
+      ToolsIco_34: 7396699504364199150
+      ToolsIco_35: 4049187005685485470
+      ToolsIco_36: -8888691860381759346
+      ToolsIco_37: -7740001082665357491
+      ToolsIco_38: 4016028848590303056
+      ToolsIco_39: -8132907087575824780
+      ToolsIco_40: -3340988352348924170
+      ToolsIco_41: -7656101045267592793
+      ToolsIco_42: -4367272492511995763
+      ToolsIco_43: -7444542530481168232
+      ToolsIco_44: 4124353912324140452
+      ToolsIco_45: 6534309999794144790
+      ToolsIco_46: 5673430972486629686
+      ToolsIco_47: -2285309921667193552
+      ToolsIco_48: 2684348247352982407
+      ToolsIco_49: 4115497474946282075
+      ToolsIco_50: -1643172145045412912
+      ToolsIco_51: -2099443328706817562
+      ToolsIco_52: -2639582804229550960
+      ToolsIco_53: 5271493307005050875
+      ToolsIco_54: -2339762291381714697
+      ToolsIco_55: 2774571218785618892
+      ToolsIco_56: 2678091915841879988
+      ToolsIco_57: 211640218047011215
+      ToolsIco_58: -5548568203514678077
+      ToolsIco_59: 8731467439940403665
+      ToolsIco_60: 7175557376212407394
+      ToolsIco_61: 237798258442376643
+      ToolsIco_62: 5802023636310319058
+      ToolsIco_63: 2490797639924686050
+      ToolsIco_9: 1984476373912282932
+      bullet_box: 5755941253774556902
+      coin: 6450716466332231294
+      crystal: -4416139887257057116
+      cube: -2422718846873308345
+      lazer: -7820351442902305672
+      one_pike: 3070120749101147753
+      spike_stick: 629364771857244377
+      two_pike: -4277868250096057132
+      walk_ball: 3242186580625073057
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 1
   userData: 
   assetBundleName: 
   assetBundleVariant: 
