@@ -6,7 +6,7 @@
     "use_vibro": 1,
     "use_sound": 1,
     "player_name": "none",
-    "ver": 156,
+    "ver": 162,
     "run_app": 2,
     "run_editor": 0,
     "time_app": 0,
@@ -14,7 +14,7 @@
     "total_distance": 0,
     "total_distance_round": 0,
     "total_distance_editor": 0,
-    "total_coins": 6805,
+    "total_coins": 7090,
     "total_jewels": 0,
     "total_box": 0,
     "tutor_complete": 1,
@@ -52,12 +52,12 @@
         {
             "id": 104,
             "ver": 0,
-            "run_count": 4,
+            "run_count": 5,
             "restart_count": 0,
             "max_coin": 95,
             "max_jewel": 0,
             "max_star": 0,
-            "is_complete": 1
+            "is_complete": 2
         },
         {
             "id": 105,
